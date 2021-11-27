@@ -30,7 +30,9 @@ bodyparam.transformation.body_lowerarmright_trans = [0,-0.299,0]; %[m m m]
 %% Init stuff parameters
 
 stuffparam.dimensions.wall = [.2,3,3]; 
+stuffparam.dimensions.ball = .1; %[m] radius
 stuffparam.transformation.body_wall_trans = [4 0 0];
+
 
 
 
