@@ -26,14 +26,6 @@ bodyparam.size.lowerarms = [.01 .01 .35];
 bodyparam.size.head  = .1;% radius
 
 
-
-
-
-
-
-
-
-
 %% Transormations:
                                        
 % foots
@@ -61,11 +53,8 @@ bodyparam.position.lowerarms_right_trans = [bodyparam.size.upperarms(1)/2 0 -bod
 bodyparam.position.lowerarms_left_trans = [-bodyparam.size.upperarms(1)/2 0 -bodyparam.size.lowerarms(3)/2]
 
 
-
 % head
 bodyparam.position.head = [0 0 .5*bodyparam.size.body(3) + .5*bodyparam.size.head];
-
-
 
 %% Init stuff parameters
 

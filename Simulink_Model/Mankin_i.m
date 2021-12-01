@@ -8,7 +8,7 @@ cd(path2model)
 init_general_param;
 init_muscle_MEF;
 init_muscle_MEE;
-init_body_parameter;
+init_model_parameter;
 
 cd(currpath)
 
