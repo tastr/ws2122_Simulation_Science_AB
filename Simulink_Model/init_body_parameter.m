@@ -1,37 +1,80 @@
 %% dimensions
 
-%head 
-bodyparam.dimensions.head = .15; %[m] radius
-bodyparam.dimensions.neck = [.1 .1 .2]; %[m m m]
+% foots
+bodyparam.size.foot = [.1 .15 .01]; 
 
-% arms 
-bodyparam.dimensions.upperarm = [0.01 0.335 0.01]; 
-bodyparam.dimensions.lowerarm = [0.01 0.263 0.01];
+%legs
+bodyparam.size.upperleg = [.01 .01 0.45];
+bodyparam.size.lowerleg = [.01 .01  0.3];
+bodyparam.size.leg = [bodyparam.size.lowerleg(1:2), bodyparam.size.lowerleg(3) + bodyparam.size.upperleg(3)];
 
-% body 
-bodyparam.dimensions.body = [.1 .3 .6]; 
+% hip 
+bodyparam.size.hip = [.25 .25 .01];
 
-% legs
-bodyparam.dimensions.upperleg = [0.01 .01 0.45];
-bodyparam.dimensions.lowerleg = [0.01 0.01  0.3];
+% body
+bodyparam.size.body = [.01 .01 .7];
 
-%% Transformations 
+% neck
+bodyparam.size.neck = [.01 .01 .1];
 
-% head and body 
-bodyparam.transformation.head_neck_trans = [0 0 .15]; %[m m m]
-bodyparam.transformation.neck_body_trans = [0 0 .4]; %[m m m]
+%arms
+bodyparam.size.upperarms = [.32 .01 .01];
+bodyparam.size.lowerarms = [.01 .01 .35];
 
-% body and arms
-bodyparam.transformation.body_upperarmleft_trans = [0 .3 -.3]; %[m m m]
-bodyparam.transformation.body_lowerarmleft_trans = [0,0.299,0]; %[m m m]
-bodyparam.transformation.body_upperarmright_trans = [0 -.3 -.3]; %[m m m]
-bodyparam.transformation.body_lowerarmright_trans = [0,-0.299,0]; %[m m m]
+
+% head
+bodyparam.size.head  = .1;% radius
+
+
+
+
+
+
+
+
+
+
+%% Transormations:
+                                       
+% foots
+bodyparam.position.foot_right_trans     = [bodyparam.size.hip(1)/2 + bodyparam.size.foot(1)/2, 0, bodyparam.size.foot(3)/2];
+bodyparam.position.foot_left_trans      = [bodyparam.size.hip(1)/2 + bodyparam.size.foot(1)/2, 0, -bodyparam.size.foot(3)/2];
+
+% lower legs
+bodyparam.position.lowerleg_right_trans = [bodyparam.size.hip(1)/2, 0, bodyparam.size.lowerleg(3)/2];
+bodyparam.position.lowerleg_left_trans  = [-bodyparam.size.hip(1)/2, 0,bodyparam.size.lowerleg(3)/2];
+
+% upper legs
+bodyparam.position.upperleg_right_trans = [0, 0, bodyparam.size.upperleg(3)/2];
+bodyparam.position.upperleg_left_trans  = [0, 0, bodyparam.size.upperleg(3)/2];
+
+% hip
+bodyparam.position.hip_trans  = [-bodyparam.size.hip(1)/2, 0, body.param.size.hip(3)/2 + bodyparam.size.upperleg(3)/2];
+
+% body
+bodyparam.position.body_trans = [0 0 bodyparam.size.body(3)/2];
+
+% arms
+bodyparam.position.upperarms_right_trans = [0 0 bodyparam.size.body(3)/2-bodyparam.size.neck(3)]
+bodyparam.position.upperarms_left_trans = [0 0 bodyparam.size.body(3)/2-bodyparam.size.neck(3)]
+bodyparam.position.lowerarms_right_trans = [bodyparam.size.upperarms(1)/2 0 -bodyparam.size.lowerarms(3)/2]
+bodyparam.position.lowerarms_left_trans = [-bodyparam.size.upperarms(1)/2 0 -bodyparam.size.lowerarms(3)/2]
+
+
+
+% head
+bodyparam.position.head = [0 0 .5*bodyparam.size.body(3) + .5*bodyparam.size.head];
+
+
 
 %% Init stuff parameters
 
 stuffparam.dimensions.wall = [.2,3,3]; 
 stuffparam.dimensions.ball = .1; %[m] radius
 stuffparam.transformation.body_wall_trans = [4 0 0];
+
+stuffparam.dimensions.floor = [4,4,.0001];
+stuffparam.transformation.floor = [0 0 .5*stuffparam.dimensions.floor(3)];
 
 
 
