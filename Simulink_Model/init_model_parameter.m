@@ -72,10 +72,6 @@ bodyparam.position.lowerarms_left_trans = [-bodyparam.size.upperarms(1)/2 0 body
 % head
 bodyparam.position.head = [0 0 .5*bodyparam.size.body(3) + .5*bodyparam.size.head];
 
-%% Mass center
-% foot
-bodyparam.masscenter.foot = [0 -1 + bodyparam.size.lowerleg(2)/bodyparam.size.foot(2)  0];
-
 
 %% Init stuff parameters
 
@@ -113,6 +109,8 @@ bodyparam.damping.hip = .2;%[Nms/rad]
 
 bodyparam.stiffness.knee = 10.72;%[Nm/rad] according to jospt.2006.2320
 bodyparam.damping.knee = 0.29;%[Nms/rad]
+
+
 
 % TODO: 
 % pelvis
