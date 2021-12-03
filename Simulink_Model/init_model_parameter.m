@@ -1,3 +1,30 @@
+%% init_model_parameter
+% all the model parameters are used for the multibody blocks. Here the
+% sized of the body and transformation vectors are listed. Also are defined
+% the sized and transformations of the stuff like wall, ball and floor.
+% The stiffness and damping coeficient are also to be defined here in
+% bodyparam.stiffness.<bodypart> or bodyparam.damping.<bodypart>. 
+% 
+% The structures collected here: 
+% bodyparam: the parameters used for the body assembling; 
+%            contains the sub structures 
+%            bodyparam.size:     the sized of the body elements,
+%            bodyparam.position: the information for the trafos for the
+%            model assembling
+%            bodyparam.weight:   the weight of the body elements
+%            bodyparam.stiffness and body.damping: the stiffnes and damping
+%            parameters for the joints
+% staffparam: the parameters of the surrounding objects; 
+%             contains the substurctures:
+%             staffparam.size and staffparam.position: the the size and
+%             transformation infos 
+% ATTENTION: the element bodyparam.<>.foot is redument, but is not delited
+% as can require some modification. However, the actual model does not have
+% foots 
+
+
+
+
 %% dimensions
 
 % foots
@@ -41,7 +68,7 @@ bodyparam.position.tobase_transform = [bodyparam.size.hip(1)/2, 0, 0];
  
 
 % lower legs
-bodyparam.position.lowerleg_right_trans.item   = [0, 0, -bodyparam.size.lowerleg(3)/2 ]
+bodyparam.position.lowerleg_right_trans.item   = [0, 0, -bodyparam.size.lowerleg(3)/2 ];
 bodyparam.position.lowerleg_right_trans.joint  = [0, 0, -bodyparam.size.lowerleg(3)/2];
 
 bodyparam.position.lowerleg_left_trans.item    = [0, 0, -bodyparam.size.lowerleg(3)/2];
@@ -77,10 +104,11 @@ bodyparam.position.head = [0 0 .5*bodyparam.size.body(3) + .5*bodyparam.size.hea
 
 stuffparam.dimensions.wall = [0.01,3,3]; 
 stuffparam.dimensions.ball = .1; %[m] radius
-stuffparam.transformation.body_wall_trans = [4 0 -stuffparam.dimensions.wall(3)/2];
+staffparam.position.ball = [1,0,-0.1];
+stuffparam.position.body_wall_trans = [4 0 -stuffparam.dimensions.wall(3)/2];
 
 stuffparam.dimensions.floor = [8,8,.01];
-stuffparam.transformation.floor = [0 0 stuffparam.dimensions.floor(3)];
+stuffparam.position.floor = [0 0 stuffparam.dimensions.floor(3)];
 
 %% weights according to https://exrx.net/Kinesiology/Segments for total 62kg
 tw = 62; %total weight
@@ -113,17 +141,11 @@ bodyparam.damping.knee = 0.29;%[Nms/rad]
 
 
 % TODO: 
-% pelvis
+% pelvis (just random paprameters so far)
 bodyparam.stiffness.pelvis = 10e4;%[Nm/rad] parameter to be defined...
 bodyparam.damping.pelvis = 1000;%[Nms/rad]
 
-% foot
-% bodyparam.stiffness.foot = 10.72;%[Nm/rad] according to jospt.2006.2320
-% bodyparam.damping.foot = 0.29;%[Nms/rad]
 
-% Next steps: 
-% Muscels 
-% Interaction with the ball 
 
 
 
