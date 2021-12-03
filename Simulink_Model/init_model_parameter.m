@@ -65,8 +65,8 @@ bodyparam.position.body_trans = [0 0 -bodyparam.size.body(3)/2];
 % arms
 bodyparam.position.upperarms_right_trans = [0 0 bodyparam.size.body(3)/2-bodyparam.size.neck(3)];
 bodyparam.position.upperarms_left_trans = [0 0 bodyparam.size.body(3)/2-bodyparam.size.neck(3)];
-bodyparam.position.lowerarms_right_trans = [bodyparam.size.upperarms(1)/2 0 -bodyparam.size.lowerarms(3)/2];
-bodyparam.position.lowerarms_left_trans = [-bodyparam.size.upperarms(1)/2 0 -bodyparam.size.lowerarms(3)/2];
+bodyparam.position.lowerarms_right_trans = [bodyparam.size.upperarms(1)/2 0 bodyparam.size.lowerarms(3)/2];
+bodyparam.position.lowerarms_left_trans = [-bodyparam.size.upperarms(1)/2 0 bodyparam.size.lowerarms(3)/2];
 
 
 % head
@@ -84,7 +84,7 @@ stuffparam.dimensions.ball = .1; %[m] radius
 stuffparam.transformation.body_wall_trans = [4 0 -stuffparam.dimensions.wall(3)/2];
 
 stuffparam.dimensions.floor = [8,8,.01];
-stuffparam.transformation.floor = [0 0 -stuffparam.dimensions.floor(3)];
+stuffparam.transformation.floor = [0 0 stuffparam.dimensions.floor(3)];
 
 %% weights according to https://exrx.net/Kinesiology/Segments for total 62kg
 tw = 62; %total weight
