@@ -1,9 +1,9 @@
 %% dimensions
 
 % foots
-bodyparam.size.foot = [0 0 0]; % 0 0 0 for no foots 
+bodyparam.size.foot = [.1 .1 .1]; % 0 0 0 for no foots 
 
-%legs
+%legs   
 bodyparam.size.upperleg = [.01 .01 0.41];
 bodyparam.size.lowerleg = [.01 .01  0.415];
 bodyparam.size.leg = [bodyparam.size.lowerleg(1:2), bodyparam.size.lowerleg(3) + bodyparam.size.upperleg(3)];
@@ -31,10 +31,10 @@ bodyparam.size.head  = .1;% radius
 % LOWER BODY 
 
 % foots
-bodyparam.position.foot_right_trans.joint     = [-bodyparam.size.hip(1)/2 , 0, 0];
+bodyparam.position.foot_right_trans.joint     = [-bodyparam.size.hip(1)/2 + bodyparam.size.lowerleg(1)/2 , 0, 0];
 bodyparam.position.foot_right_trans.item      =  [0, 0, 0];
 
-bodyparam.position.foot_left_trans.joint      = [bodyparam.size.hip(1)/2, 0,0];
+bodyparam.position.foot_left_trans.joint      = [bodyparam.size.hip(1)/2 - bodyparam.size.lowerleg(1)/2, 0,0];
 bodyparam.position.foot_left_trans.item       = [0, 0, 0];
 bodyparam.position.tobase_transform = [bodyparam.size.hip(1)/2, 0, 0];
 
@@ -55,8 +55,8 @@ bodyparam.position.upperleg_left_trans.item =  [0, 0, -bodyparam.size.upperleg(3
 bodyparam.position.upperleg_left_trans.joint = [0, 0, -bodyparam.size.upperleg(3)/2 - bodyparam.size.hip(3)/2];
 
 % hip
-bodyparam.position.hip_trans_right  = [bodyparam.size.hip(1)/2, 0, 0];
-bodyparam.position.hip_trans_left  =  [-bodyparam.size.hip(1)/2, 0, 0];
+bodyparam.position.hip_trans_right  = [bodyparam.size.hip(1)/2 - bodyparam.size.lowerleg(1)/2, 0, 0];
+bodyparam.position.hip_trans_left  =  [-bodyparam.size.hip(1)/2 + bodyparam.size.lowerleg(1)/2, 0, 0];
 
 % UPPER BODY 
 % body
