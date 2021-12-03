@@ -79,13 +79,12 @@ bodyparam.masscenter.foot = [0 -1 + bodyparam.size.lowerleg(2)/bodyparam.size.fo
 
 %% Init stuff parameters
 
-stuffparam.dimensions.wall = [.2,3,3]; 
+stuffparam.dimensions.wall = [0.01,3,3]; 
 stuffparam.dimensions.ball = .1; %[m] radius
-stuffparam.transformation.body_wall_trans = [4 0 0];
+stuffparam.transformation.body_wall_trans = [4 0 -stuffparam.dimensions.wall(3)/2];
 
-stuffparam.dimensions.floor = [4,4,.0001];
-stuffparam.transformation.floor = [0 0 -.5*stuffparam.dimensions.floor(3)];
-
+stuffparam.dimensions.floor = [8,8,.01];
+stuffparam.transformation.floor = [0 0 -stuffparam.dimensions.floor(3)];
 
 %% weights according to https://exrx.net/Kinesiology/Segments for total 62kg
 tw = 62; %total weight
@@ -96,28 +95,29 @@ bodyparam.weight.lowerarm = 0.0252*tw;
 bodyparam.weight.hip = .1366*tw; 
 bodyparam.weight.upperleg = .105*tw;
 bodyparam.weight.lowerleg = 0.0475*tw; 
-bodyparam.weight.foot = 0.0143*tw; 
+
+%bodyparam.weight.foot = 0.0143*tw; 
 bodyparam.weight.body = bodyparam.weight.total - bodyparam.weight.head...
                                    - bodyparam.weight.upperarm...
                                    - bodyparam.weight.lowerarm...
                                    - bodyparam.weight.hip...
                                    - bodyparam.weight.upperleg...
-                                   - bodyparam.weight.lowerleg...
-                                   - bodyparam.weight.foot;
+                                   - bodyparam.weight.lowerleg;
+                                   %- bodyparam.weight.foot;
 
 %% stiffness and damping
 
 % femur
-bodyparam.stiffness.femur = 7;%[Nm/rad] No ref
-bodyparam.damping.femur = .2;%[Nms/rad]
+bodyparam.stiffness.hip = 7;%[Nm/rad] No ref
+bodyparam.damping.hip = .2;%[Nms/rad]
 
 bodyparam.stiffness.knee = 10.72;%[Nm/rad] according to jospt.2006.2320
 bodyparam.damping.knee = 0.29;%[Nms/rad]
 
 % TODO: 
 % pelvis
-% bodyparam.stiffness.pelvis = 10.72;%[Nm/rad] according to jospt.2006.2320
-% bodyparam.damping.pelvis = 0.29;%[Nms/rad]
+bodyparam.stiffness.pelvis = 10e4;%[Nm/rad] parameter to be defined...
+bodyparam.damping.pelvis = 1000;%[Nms/rad]
 
 % foot
 % bodyparam.stiffness.foot = 10.72;%[Nm/rad] according to jospt.2006.2320
