@@ -18,17 +18,14 @@
 %             contains the substurctures:
 %             staffparam.size and staffparam.position: the the size and
 %             transformation infos 
-% ATTENTION: the element bodyparam.<>.foot is redument, but is not delited
-% as can require some modification. However, the actual model does not have
-% foots 
+
 
 
 
 
 %% dimensions
 
-% foots
-bodyparam.size.foot = [.1 .1 .1]; % 0 0 0 for no foots 
+
 
 %legs   
 bodyparam.size.upperleg = [.01 .01 0.41];
@@ -56,16 +53,6 @@ bodyparam.size.head  = .1;% radius
 %% Transormations:
                                        
 % LOWER BODY 
-
-% foots
-bodyparam.position.foot_right_trans.joint     = [-bodyparam.size.hip(1)/2 + bodyparam.size.lowerleg(1)/2 , 0, 0];
-bodyparam.position.foot_right_trans.item      =  [0, 0, 0];
-
-bodyparam.position.foot_left_trans.joint      = [bodyparam.size.hip(1)/2 - bodyparam.size.lowerleg(1)/2, 0,0];
-bodyparam.position.foot_left_trans.item       = [0, 0, 0];
-bodyparam.position.tobase_transform = [bodyparam.size.hip(1)/2, 0, 0];
-
- 
 
 % lower legs
 bodyparam.position.lowerleg_right_trans.item   = [0, 0, -bodyparam.size.lowerleg(3)/2 ];
@@ -120,14 +107,12 @@ bodyparam.weight.hip = .1366*tw;
 bodyparam.weight.upperleg = .105*tw;
 bodyparam.weight.lowerleg = 0.0475*tw; 
 
-%bodyparam.weight.foot = 0.0143*tw; 
 bodyparam.weight.body = bodyparam.weight.total - bodyparam.weight.head...
                                    - bodyparam.weight.upperarm...
                                    - bodyparam.weight.lowerarm...
                                    - bodyparam.weight.hip...
                                    - bodyparam.weight.upperleg...
                                    - bodyparam.weight.lowerleg;
-                                   %- bodyparam.weight.foot;
 
 %% stiffness and damping
 
