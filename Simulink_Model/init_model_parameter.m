@@ -55,11 +55,11 @@ bodyparam.size.head  = .1;% radius
 % LOWER BODY 
 
 % lower legs
-bodyparam.position.lowerleg_right_trans.item   = [0, 0, -bodyparam.size.lowerleg(3)/2 ];
+bodyparam.position.lowerleg_right_trans.item   = [-bodyparam.size.hip(1)/2 + bodyparam.size.lowerleg(1)/2, 0, -bodyparam.size.lowerleg(3)/2 ];
 bodyparam.position.lowerleg_right_trans.joint  = [0, 0, -bodyparam.size.lowerleg(3)/2];
 
-bodyparam.position.lowerleg_left_trans.item    = [0, 0, -bodyparam.size.lowerleg(3)/2];
-bodyparam.position.lowerleg_left_trans.joint   = [0, 0, -bodyparam.size.upperleg(3)/2];
+bodyparam.position.lowerleg_left_trans.item    = [bodyparam.size.hip(1)/2 - bodyparam.size.lowerleg(1)/2, 0, -bodyparam.size.lowerleg(3)/2];
+bodyparam.position.lowerleg_left_trans.joint   = [0, 0, -bodyparam.size.lowerleg(3)/2];
 
 % upper legs
 bodyparam.position.upperleg_right_trans.item =  [0, 0, -bodyparam.size.upperleg(3)/2];
