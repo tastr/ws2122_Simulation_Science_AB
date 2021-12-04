@@ -91,8 +91,8 @@ bodyparam.position.head = [0 0 .5*bodyparam.size.body(3) + .5*bodyparam.size.hea
 
 stuffparam.dimensions.wall = [0.01,3,3]; 
 stuffparam.dimensions.ball = .1; %[m] radius
-staffparam.position.ball = [1,0,-0.1];
-stuffparam.position.body_wall_trans = [4 0 -stuffparam.dimensions.wall(3)/2];
+staffparam.position.ball = [bodyparam.size.hip(1)/2,-.2,-stuffparam.dimensions.ball];
+stuffparam.position.body_wall_trans = [0 -4 -stuffparam.dimensions.wall(3)/2];
 
 stuffparam.dimensions.floor = [8,8,.01];
 stuffparam.position.floor = [0 0 stuffparam.dimensions.floor(3)];
