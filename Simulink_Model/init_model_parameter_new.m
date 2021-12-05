@@ -45,6 +45,7 @@ bodyparam.size.lowerleg = [.01 .01  0.415];
 bodyparam.size.leg = [bodyparam.size.lowerleg(1:2), bodyparam.size.lowerleg(3) + bodyparam.size.upperleg(3)];
 
 bodyparam.size.bodyheight = bodyparam.size.head + bodyparam.size.body(3) + bodyparam.size.leg(3); 
+bodyparam.size.lowerbodyheight = bodyparam.size.leg(3) + 1/2*bodyparam.size.hip(3);
 
 
 
@@ -54,16 +55,18 @@ bodyparam.size.bodyheight = bodyparam.size.head + bodyparam.size.body(3) + bodyp
 % UPPER BODY
 
 % head
-bodyparam.position.head = [0 0 .5*bodyparam.size.head];
+bodyparam.position.head = [0 0 bodyparam.size.head/2+bodyparam.size.neck(3)];
 
+%neck
+bodyparam.position.neck = [0 0 bodyparam.size.body(3)/2 - bodyparam.size.neck(3)];
 % arms
-bodyparam.position.upperarm_right_trans = [bodyparam.size.upperarm(1)/2 0 bodyparam.size.head/2+bodyparam.size.neck(3)];
-bodyparam.position.upperarm_left_trans = [-bodyparam.size.upperarm(1)/2 0 bodyparam.size.head/2+bodyparam.size.neck(3)];
+bodyparam.position.upperarm_right_trans = [bodyparam.size.upperarm(1)/2 0 0];
+bodyparam.position.upperarm_left_trans = [-bodyparam.size.upperarm(1)/2 0 0];
 bodyparam.position.lowerarm_right_trans = [bodyparam.size.upperarm(1)/2 0 bodyparam.size.lowerarm(3)/2];
 bodyparam.position.lowerarm_left_trans = [-bodyparam.size.upperarm(1)/2 0 bodyparam.size.lowerarm(3)/2];
 
 % body
-bodyparam.position.body_trans = [0 0 bodyparam.size.head/2 + bodyparam.size.body(3)/2];
+bodyparam.position.body_trans = [0, 0, bodyparam.size.body(3)/2];
 
 
 % LOWER BODY 
@@ -100,8 +103,8 @@ stuffparam.dimensions.floor = [8,8,.01];
 
 
 staffparam.position.ball = [bodyparam.size.hip(1)/2, -.2, -stuffparam.dimensions.ball];
-stuffparam.position.wall = [0 -4 bodyparam.size.bodyheight-stuffparam.dimensions.wall(3)/2];
-stuffparam.position.floor = [0 0 bodyparam.size.bodyheight];
+stuffparam.position.wall = [0 -4 bodyparam.size.lowerbodyheight-stuffparam.dimensions.wall(3)/2];
+stuffparam.position.floor = [0 0 bodyparam.size.lowerbodyheight];
 
 
 
