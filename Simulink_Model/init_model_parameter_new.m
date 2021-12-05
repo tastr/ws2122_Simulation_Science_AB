@@ -97,12 +97,12 @@ bodyparam.position.centering_left = [-bodyparam.size.hip(1)/2 + bodyparam.size.u
 
 %% Init stuff parameters
 
-stuffparam.dimensions.wall = [0.01,3,3]; 
+stuffparam.dimensions.wall = [3,0.01,3]; 
 stuffparam.dimensions.ball = .1; %[m] radius
 stuffparam.dimensions.floor = [8,8,.01];
 
 
-staffparam.position.ball = [bodyparam.size.hip(1)/2, -.2, -stuffparam.dimensions.ball];
+staffparam.position.ball = [bodyparam.size.hip(1)/2, -.2, -7*stuffparam.dimensions.ball];
 stuffparam.position.wall = [0 -4 bodyparam.size.lowerbodyheight-stuffparam.dimensions.wall(3)/2];
 stuffparam.position.floor = [0 0 bodyparam.size.lowerbodyheight];
 
