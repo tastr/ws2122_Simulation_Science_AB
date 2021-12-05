@@ -44,6 +44,9 @@ bodyparam.size.upperleg = [.01 .01 0.41];
 bodyparam.size.lowerleg = [.01 .01  0.415];
 bodyparam.size.leg = [bodyparam.size.lowerleg(1:2), bodyparam.size.lowerleg(3) + bodyparam.size.upperleg(3)];
 
+bodyparam.size.bodyheight = bodyparam.size.head + bodyparam.size.body(3) + bodyparam.size.leg(3); 
+
+
 
 
 %% Transormations:
@@ -97,8 +100,8 @@ stuffparam.dimensions.floor = [8,8,.01];
 
 
 staffparam.position.ball = [bodyparam.size.hip(1)/2, -.2, -stuffparam.dimensions.ball];
-stuffparam.position.wall = [0 -4 -stuffparam.dimensions.wall(3)/2];
-stuffparam.position.floor = [0 0 stuffparam.dimensions.floor(3)];
+stuffparam.position.wall = [0 -4 bodyparam.size.bodyheight-stuffparam.dimensions.wall(3)/2];
+stuffparam.position.floor = [0 0 bodyparam.size.bodyheight];
 
 
 
