@@ -16,7 +16,7 @@
 %            parameters for the joints
 % staffparam: the parameters of the surrounding objects; 
 %             contains the substurctures:
-%             staffparam.size and staffparam.position: the the size and
+%             staffparam.dimensions and staffparam.position: the the size and
 %             transformation infos 
 
 
