@@ -143,7 +143,9 @@ bodyparam.damping.pelvis = 1000;%[Nms/rad]
 
 
 
+%% Target 
 
+target_position = [.1, 0, .3];
 
 
 
