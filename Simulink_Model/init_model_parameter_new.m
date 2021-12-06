@@ -47,7 +47,9 @@ bodyparam.size.leg = [bodyparam.size.lowerleg(1:2), bodyparam.size.lowerleg(3) +
 bodyparam.size.bodyheight = bodyparam.size.head + bodyparam.size.body(3) + bodyparam.size.leg(3); 
 bodyparam.size.lowerbodyheight = bodyparam.size.leg(3) + 1/2*bodyparam.size.hip(3);
 
-
+% balls for the joints visualizations
+bodyparam.size.jointballs = .02; 
+bodyparam.size.jointballs_hip = .04; 
 
 
 %% Transormations:
@@ -78,8 +80,8 @@ bodyparam.position.hip_trans  = [0, 0,  bodyparam.size.body(3)/2];
 bodyparam.position.upperleg_right_trans.joint = [bodyparam.size.hip(1)/2 - bodyparam.size.upperleg(1)/2, 0, bodyparam.size.upperleg(1)/2];
 bodyparam.position.upperleg_right_trans.item =  [0, 0, bodyparam.size.upperleg(3)/2];
 
-bodyparam.position.upperleg_left_trans.item =  [-bodyparam.size.hip(1)/2 + bodyparam.size.upperleg(1)/2, 0, bodyparam.size.upperleg(1)/2];
-bodyparam.position.upperleg_left_trans.joint = [0, 0, bodyparam.size.upperleg(3)/2];
+bodyparam.position.upperleg_left_trans.joint = [-bodyparam.size.hip(1)/2 + bodyparam.size.upperleg(1)/2, 0, bodyparam.size.upperleg(1)/2];
+bodyparam.position.upperleg_left_trans.item =  [0, 0, bodyparam.size.upperleg(3)/2];
 
 
 % lower legs
