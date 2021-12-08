@@ -42,7 +42,9 @@ bodyparam.size.hip = [.1643 .1224 .18783];
 %legs   
 bodyparam.size.upperleg = [.0947 .0947 0.4347];
 bodyparam.size.lowerleg = [.0597 .0597  0.4239];
+bodyparam.size.foot = [0.0398, 0.0398, 0.272];
 bodyparam.size.leg = [bodyparam.size.lowerleg(1:2), bodyparam.size.lowerleg(3) + bodyparam.size.upperleg(3)];
+
 
 bodyparam.size.bodyheight = bodyparam.size.head + bodyparam.size.body(3) + bodyparam.size.leg(3); 
 bodyparam.size.lowerbodyheight = bodyparam.size.leg(3) + 1/2*bodyparam.size.hip(3);
@@ -77,10 +79,10 @@ bodyparam.position.body_trans = [0, 0, bodyparam.size.body(3)/2];
 bodyparam.position.hip_trans  = [0, 0,  bodyparam.size.body(3)/2];
 
 % upper legs
-bodyparam.position.upperleg_right_trans.joint = [bodyparam.size.hip(1)/2 - bodyparam.size.upperleg(1)/2, 0, bodyparam.size.upperleg(1)/2];
+bodyparam.position.upperleg_right_trans.joint = [bodyparam.size.hip(1)/2 , 0, bodyparam.size.upperleg(1)/2];
 bodyparam.position.upperleg_right_trans.item =  [0, 0, bodyparam.size.upperleg(3)/2];
 
-bodyparam.position.upperleg_left_trans.joint = [-bodyparam.size.hip(1)/2 + bodyparam.size.upperleg(1)/2, 0, bodyparam.size.upperleg(1)/2];
+bodyparam.position.upperleg_left_trans.joint = [-bodyparam.size.hip(1)/2 , 0, bodyparam.size.upperleg(1)/2];
 bodyparam.position.upperleg_left_trans.item =  [0, 0, bodyparam.size.upperleg(3)/2];
 
 
@@ -95,6 +97,12 @@ bodyparam.position.lowerleg_left_trans.joint   = [0, 0, bodyparam.size.lowerleg(
 bodyparam.position.centering_right = [-bodyparam.size.hip(1)/2 + bodyparam.size.upperleg(1)/2, 0, bodyparam.size.lowerleg(3)/2];
 bodyparam.position.centering_left = [-bodyparam.size.hip(1)/2 + bodyparam.size.upperleg(1)/2, 0, bodyparam.size.lowerleg(3)/2];
 
+%
+bodyparam.position.foot_left_trans.joint   = [0, 0, bodyparam.size.lowerleg(3)/2];
+bodyparam.position.foot_left_trans.item   = [-bodyparam.size.foot(1)/2, bodyparam.size.foot(2)/2, bodyparam.size.foot(3)/2];
+
+bodyparam.position.foot_right_trans.joint   = [0, 0, bodyparam.size.lowerleg(3)/2];
+bodyparam.position.foot_right_trans.item   = [-bodyparam.size.foot(1)/2, bodyparam.size.foot(2)/2, bodyparam.size.foot(3)/2];
 
 
 %% Init stuff parameters

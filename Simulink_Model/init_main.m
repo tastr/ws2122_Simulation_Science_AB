@@ -8,6 +8,7 @@ path2model = strrep(path2model,modelname + ".slx", "")
 
 cd(path2model)
 addpath("init_muscle")
+Ts = 1e-3;
 init_general_param;
 init_muscle_MEF_hip;
 init_muscle_MEE_hip;
