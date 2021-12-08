@@ -15,36 +15,25 @@ N = length(t);
 oz = [ones((N-1)/2,1); zeros((N-1)/2 + 1,1)];
 z  = [zeros(N,1)];
 %%
-dataset.u_knee_MEF = timeseries(oz, t, 'Name', 'u_knee_MEF');
-dataset.u_knee_MEE = timeseries(z, t, 'Name', 'u_knee_MEF');
+indata.u_knee_MEF = timeseries(z, t, 'Name', 'u_knee_MEF');
+indata.u_knee_MEE = timeseries(oz, t, 'Name', 'u_knee_MEF');
 
-dataset.u_hip_MEF = timeseries(z, t, 'Name', 'u_hip_MEF');
-dataset.u_hip_MEE = timeseries(z, t, 'Name', 'u_hip_MEE');
+indata.u_hip_MEF = timeseries(z, t, 'Name', 'u_hip_MEF');
+indata.u_hip_MEE = timeseries(z, t, 'Name', 'u_hip_MEE');
 
-dataset.u_hip_abd = timeseries(z, t, 'Name', 'u_hip_abd');
-dataset.u_hip_add = timeseries(z, t, 'Name', 'u_hip_add');
-
-
-dataset.u_foot_MEF = timeseries(z, t, 'Name', 'u_foot_MEF');
-dataset.u_foot_MEE = timeseries(z, t, 'Name', 'u_foot_MEE');
+indata.u_hip_abd = timeseries(z, t, 'Name', 'u_hip_abd');
+indata.u_hip_add = timeseries(z, t, 'Name', 'u_hip_add');
 
 
-InputBus = Simulink.Bus.createObject(dataset);
+indata.u_foot_MEF = timeseries(z, t, 'Name', 'u_foot_MEF');
+indata.u_foot_MEE = timeseries(z, t, 'Name', 'u_foot_MEE');
+
+
+InputBus = Simulink.Bus.createObject(indata);
 oldName = InputBus.busName;
 InputBus.busName = "InputBus";
 clear(oldName)
 
 %%
-dataset.u_knee_MEF = oz;
-dataset.u_knee_MEE = z;
 
-dataset.u_hip_MEF = z;
-dataset.u_hip_MEE = z;
-
-dataset.u_hip_abd = z;
-dataset.u_hip_add = z;
-
-
-dataset.u_foot_MEF = z;
-dataset.u_foot_MEE = z;
 
