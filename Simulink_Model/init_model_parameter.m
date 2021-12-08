@@ -205,16 +205,16 @@ bodyparam.stiffness.hip = 100;%[Nm/rad] No ref
 bodyparam.damping.hip = .001;%[Nms/rad]
 
 % knee
-bodyparam.stiffness.knee = 100;%[Nm/rad] according to jospt.2006.2320
+bodyparam.stiffness.knee = 100000;%[Nm/rad] according to jospt.2006.2320
 bodyparam.damping.knee = .001;%[Nms/rad]
 
 % pelvis
-bodyparam.stiffness.ankle = 100;%[Nm/rad] parameter to be defined...
+bodyparam.stiffness.ankle = 100000;%[Nm/rad] parameter to be defined...
 bodyparam.damping.ankle = .001;%[Nms/rad]
 
 
 % pelvis
-bodyparam.stiffness.pelvis = 100;%[Nm/rad] parameter to be defined...
+bodyparam.stiffness.pelvis = 100000;%[Nm/rad] parameter to be defined...
 bodyparam.damping.pelvis = .001;%[Nms/rad]
 
 %% Inertia 1/2*(a^2 + b^2)*m
@@ -238,7 +238,7 @@ stuffparam.dimensions.ball = .1; %[m] radius
 stuffparam.dimensions.floor = [8,8,.01];
 
 
-staffparam.position.ball  = [.5,bodyparam.size.hip(1)/2,  bodyparam.size.lowerbodyheight-stuffparam.dimensions.ball-stuffparam.dimensions.floor(3)/2];
+staffparam.position.ball  = [.5,bodyparam.size.hip(1)/2, -stuffparam.dimensions.ball-stuffparam.dimensions.floor(3)/2];%[.5,bodyparam.size.hip(1)/2,  bodyparam.size.lowerbodyheight-stuffparam.dimensions.ball-stuffparam.dimensions.floor(3)/2];
 stuffparam.position.wall = [4 0 bodyparam.size.lowerbodyheight-stuffparam.dimensions.wall(3)/2];
 stuffparam.position.floor = [0 0 bodyparam.size.lowerbodyheight];
 
