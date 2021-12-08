@@ -69,13 +69,14 @@ bodyparam.weight.foot     = 1.0172;  %[kg]
 
 % head
 bodyparam.position.head = [0 0 bodyparam.size.head(3)/2];
-
+bodyparam.position.neck = [0 0 -bodyparam.size.neck(3)/2];
 %neck
 bodyparam.position.neck = [0 0 bodyparam.size.body(3)/2];
 % arms
 bodyparam.position.right.lowerarm = [0 0 bodyparam.size.upperarm(3)/2 + bodyparam.size.lowerarm(3)/2];
-bodyparam.position.right.lowerarm = [0 0 bodyparam.size.upperarm(3)/2 + bodyparam.size.lowerarm(3)/2];
-bodyparam.position.left.upperarm = [0 0 bodyparam.size.upperarm(3)/2];
+bodyparam.position.left.lowerarm = [0 0 bodyparam.size.upperarm(3)/2 + bodyparam.size.lowerarm(3)/2];
+
+bodyparam.position.right.upperarm = [0 0 bodyparam.size.upperarm(3)/2];
 bodyparam.position.left.upperarm = [0 0 bodyparam.size.upperarm(3)/2];
 
 % body
@@ -88,26 +89,26 @@ bodyparam.position.body = [0, 0, bodyparam.size.body(3)/2];
 bodyparam.position.hip  = [0, 0,  bodyparam.size.body(3)/2];
 
 % upper legs
-bodyparam.position.right.upperleg.right.joint = [0, bodyparam.size.hip(1)/2, bodyparam.size.upperleg(1)/2];
-bodyparam.position.right.upperleg.right.item =  [0, 0, bodyparam.size.upperleg(3)/2];
+bodyparam.position.right.upperleg.joint = [0, bodyparam.size.hip(1)/2, bodyparam.size.upperleg(1)/2];
+bodyparam.position.right.upperleg.item =  [0, 0, bodyparam.size.upperleg(3)/2];
 
 bodyparam.position.left.upperleg.joint = [0, -bodyparam.size.hip(1)/2, bodyparam.size.upperleg(1)/2];
 bodyparam.position.left.upperleg.item =  [0, 0, bodyparam.size.upperleg(3)/2];
 
 
 % lower legs
-bodyparam.position.right.lowerleg.right.joint  = [0, 0, bodyparam.size.upperleg(3)/2];
-bodyparam.position.right.lowerleg.right.item   = [0, 0, bodyparam.size.lowerleg(3)/2];
+bodyparam.position.right.lowerleg.joint  = [0, 0, bodyparam.size.upperleg(3)/2];
+bodyparam.position.right.lowerleg.item   = [0, 0, bodyparam.size.lowerleg(3)/2];
 
 bodyparam.position.left.lowerleg.item    = [0, 0, bodyparam.size.upperleg(3)/2];
 bodyparam.position.left.lowerleg.joint   = [0, 0, bodyparam.size.lowerleg(3)/2];
 
 % foot 
 bodyparam.position.right.foot.joint   = [0, 0, bodyparam.size.lowerleg(3)/2];
-bodyparam.position.right.foot.item   = [bodyparam.size.foot(1)/2,0, bodyparam.size.foot(1)/2];
+bodyparam.position.right.foot.item   = [2*bodyparam.size.foot(1)/3,0, bodyparam.size.foot(1)/2];
 
 bodyparam.position.left.foot.joint   = [0, 0, bodyparam.size.lowerleg(3)/2];
-bodyparam.position.left.foot.item   = [0, 0, bodyparam.size.foot(1)/2];
+bodyparam.position.left.foot.item   = [2*bodyparam.size.foot(1)/3,0, bodyparam.size.foot(1)/2];
 
 
 
