@@ -221,7 +221,7 @@ stuffparam.dimensions.ball = .1; %[m] radius
 stuffparam.dimensions.floor = [8,8,.01];
 
 
-staffparam.position.ball  = [.5,bodyparam.size.hip(1)/2,  bodyparam.size.lowerbodyheight-stuffparam.dimensions.ball-stuffparam.dimensions.floor(3)/2]
+staffparam.position.ball  = [.5,bodyparam.size.hip(1)/2,  bodyparam.size.lowerbodyheight-stuffparam.dimensions.ball-stuffparam.dimensions.floor(3)/2];
 stuffparam.position.wall = [4 0 bodyparam.size.lowerbodyheight-stuffparam.dimensions.wall(3)/2];
 stuffparam.position.floor = [0 0 bodyparam.size.lowerbodyheight];
 
