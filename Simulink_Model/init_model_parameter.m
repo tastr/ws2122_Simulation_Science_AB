@@ -105,10 +105,10 @@ bodyparam.position.left.lowerleg.joint   = [0, 0, bodyparam.size.lowerleg(3)/2];
 
 % foot 
 bodyparam.position.right.foot.joint   = [0, 0, bodyparam.size.lowerleg(3)/2];
-bodyparam.position.right.foot.item   = [2*bodyparam.size.foot(1)/3,0, bodyparam.size.foot(1)/2];
+bodyparam.position.right.foot.item   = [bodyparam.size.foot(3)/2,0, bodyparam.size.foot(1)/2];
 
 bodyparam.position.left.foot.joint   = [0, 0, bodyparam.size.lowerleg(3)/2];
-bodyparam.position.left.foot.item   = [2*bodyparam.size.foot(1)/3,0, bodyparam.size.foot(1)/2];
+bodyparam.position.left.foot.item   = [bodyparam.size.foot(3)/2,0, bodyparam.size.foot(1)/2];
 
 
 
@@ -156,15 +156,14 @@ bodyparam.r.foot = 0.08; % [m]
 
 %% Init stuff parameters
 
-stuffparam.dimensions.wall = [3,0.01,3]; 
+stuffparam.dimensions.wall = [0.01,3,3]; 
 stuffparam.dimensions.ball = .1; %[m] radius
 stuffparam.dimensions.floor = [8,8,.01];
 
 
-%staffparam.position.ball = [bodyparam.size.hip(1)/2, -.3, -.5*stuffparam.dimensions.ball];
-staffparam.position.ball  = [bodyparam.size.hip(1)/2, -.3,  bodyparam.size.lowerbodyheight-stuffparam.dimensions.ball]
-stuffparam.position.wall = [0 -4 bodyparam.size.lowerbodyheight-stuffparam.dimensions.wall(3)/2];
-stuffparam.position.floor = [0 0 bodyparam.size.lowerbodyheight + stuffparam.dimensions.wall(2)/2];
+staffparam.position.ball  = [.5,bodyparam.size.hip(1)/2,  bodyparam.size.lowerbodyheight-stuffparam.dimensions.ball-stuffparam.dimensions.floor(3)/2]
+stuffparam.position.wall = [4 0 bodyparam.size.lowerbodyheight-stuffparam.dimensions.wall(3)/2];
+stuffparam.position.floor = [0 0 bodyparam.size.lowerbodyheight];
 
 
 
@@ -205,11 +204,12 @@ bodyparam.damping.ankle = .001;%[Nms/rad]
 bodyparam.stiffness.pelvis = 100;%[Nm/rad] parameter to be defined...
 bodyparam.damping.pelvis = .001;%[Nms/rad]
 
+%% Colors
+lcolor = [.2 .6 1];
+ucolor = [1.0 0.8 0.8];
+jcolor = [.4 1 .6];
 
 
-%% Target 
-
-target_position = [.1, 0, .3];
 
 
 
