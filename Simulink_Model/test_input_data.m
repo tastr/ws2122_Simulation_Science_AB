@@ -30,9 +30,7 @@ indata.u_foot_MEE = timeseries(z, t, 'Name', 'u_foot_MEE');
 
 
 InputBus = Simulink.Bus.createObject(indata);
-oldName = InputBus.busName;
-InputBus.busName = "InputBus";
-clear(oldName)
+
 
 %%
 

@@ -14,6 +14,14 @@
 %            bodyparam.weight:   the weight of the body elements
 %            bodyparam.stiffness and body.damping: the stiffnes and damping
 %            parameters for the joints
+%            bodyparam.d1: distance proximal joint to the bodys center of mass
+%            bodyparam.sp and bodyparam.inertia: the center of mass and
+%            inertia
+%            bodyparam.r: muscle laverage
+%            bodyparam.maxlim and bodyparam.minlim: the minimal and maximal
+%            limit for the according joints 
+%            
+%            
 % staffparam: the parameters of the surrounding objects; 
 %             contains the substurctures:
 %             staffparam.dimensions and staffparam.position: the the size and
@@ -163,24 +171,7 @@ bodyparam.r.hip.abd = 0.09; % [m]
 bodyparam.r.knee = 0.05; % [m]
 bodyparam.r.foot = 0.08; % [m]
 
-%%
 
-
-
-
-
-
-
-%% Init stuff parameters
-
-stuffparam.dimensions.wall = [0.01,3,3]; 
-stuffparam.dimensions.ball = .1; %[m] radius
-stuffparam.dimensions.floor = [8,8,.01];
-
-
-staffparam.position.ball  = [.5,bodyparam.size.hip(1)/2,  bodyparam.size.lowerbodyheight-stuffparam.dimensions.ball-stuffparam.dimensions.floor(3)/2]
-stuffparam.position.wall = [4 0 bodyparam.size.lowerbodyheight-stuffparam.dimensions.wall(3)/2];
-stuffparam.position.floor = [0 0 bodyparam.size.lowerbodyheight];
 
 
 
@@ -189,18 +180,6 @@ bodyparam.weight.pelvis = 10.2516; %[kg]
 bodyparam.weight.upperleg = 8.1719; %[kg]
 bodyparam.weight.lowerleg = 3.3541; %[kg]
 
-%% radius
-bodyparam.rx.pelvis = 0.1224; %[m]
-bodyparam.ry.pelvis = 0.1643; %[m]
-bodyparam.hz.pelvis = 0.18783; %[m]
-
-bodyparam.rx.upperleg = 0.0947; %[m]
-%bodyparam.ry.upperleg = 0.1643; %[m] % no data in the sheet
-bodyparam.hz.upperleg = 0.4347; %[m]
-
-bodyparam.rx.lowerleg = 0.0597; %[m]
-%bodyparam.ry.lowerleg = 0.1643; %[m] % no data in the sheet
-bodyparam.hz.lowerleg = 0.4239; %[m]
 
 %% stiffness and damping
 
@@ -235,12 +214,20 @@ bodyparam.inertia.left.foot = get_inertia(bodyparam.size.foot, bodyparam.d1.left
 
 
 
+%% Init stuff parameters
+
+stuffparam.dimensions.wall = [0.01,3,3]; 
+stuffparam.dimensions.ball = .1; %[m] radius
+stuffparam.dimensions.floor = [8,8,.01];
 
 
-%% Colors
-lcolor = [.2 .6 1];
-ucolor = [1.0 0.8 0.8];
-jcolor = [.4 1 .6];
+staffparam.position.ball  = [.5,bodyparam.size.hip(1)/2,  bodyparam.size.lowerbodyheight-stuffparam.dimensions.ball-stuffparam.dimensions.floor(3)/2]
+stuffparam.position.wall = [4 0 bodyparam.size.lowerbodyheight-stuffparam.dimensions.wall(3)/2];
+stuffparam.position.floor = [0 0 bodyparam.size.lowerbodyheight];
+
+
+
+
 
 
 
