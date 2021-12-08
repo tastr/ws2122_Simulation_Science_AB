@@ -16,121 +16,231 @@
 %            parameters for the joints
 % staffparam: the parameters of the surrounding objects; 
 %             contains the substurctures:
-%             staffparam.size and staffparam.position: the the size and
+%             staffparam.dimensions and staffparam.position: the the size and
 %             transformation infos 
 
 
 
+%%
 
 
 %% dimensions
 
-
-
-%legs   
-bodyparam.size.upperleg = [.01 .01 0.41];
-bodyparam.size.lowerleg = [.01 .01  0.415];
-bodyparam.size.leg = [bodyparam.size.lowerleg(1:2), bodyparam.size.lowerleg(3) + bodyparam.size.upperleg(3)];
-
-% hip 
-bodyparam.size.hip = [.25 .01 .01];
-
-% body
-bodyparam.size.body = [.01 .01 .7];
-
-% neck
+% head
+bodyparam.size.head  = [.0993 .0778 .278194];%
 bodyparam.size.neck = [.01 .01 .1];
 
 %arms
-bodyparam.size.upperarms = [.32 .01 .01];
-bodyparam.size.lowerarms = [.01 .01 .35];
+bodyparam.size.upperarm = [.0495 .0495 .3065];%[.32 .01 .01];
+bodyparam.size.lowerarm = [.0477 .0477 .2725];
+bodyparam.size.hand     = [.028 .089 .0192];
+
+% body
+bodyparam.size.body = [.1224 .1643 .4166];
+
+% hip 
+bodyparam.size.hip = [.1224 .1643 .18783];
+
+%legs   
+bodyparam.size.upperleg = [.0947 .0947 0.4347];
+bodyparam.size.lowerleg = [.0597 .0597  0.4239];
+bodyparam.size.foot = [0.0398, 0.0398, 0.272];
 
 
-% head
-bodyparam.size.head  = .1;% radius
+bodyparam.size.leg = [bodyparam.size.lowerleg(1:2), bodyparam.size.lowerleg(3) + bodyparam.size.upperleg(3)];
 
+
+bodyparam.size.bodyheight = bodyparam.size.head(3) + bodyparam.size.body(3) + bodyparam.size.leg(3); 
+bodyparam.size.lowerbodyheight = bodyparam.size.leg(3) + 1/2*bodyparam.size.hip(3);
+
+% balls for the joints visualizations
+bodyparam.size.jointballs = .02; 
+bodyparam.size.jointballs_hip = .04; 
+
+%% weights
+bodyparam.weight.pelvis   = 10.2516; %[kg] 
+bodyparam.weight.upperleg = 8.1719;  %[kg]
+bodyparam.weight.lowerleg = 3.3541;  %[kg]
+bodyparam.weight.foot     = 1.0172;  %[kg] 
 
 %% Transormations:
-                                       
-% LOWER BODY 
 
-% lower legs
-bodyparam.position.lowerleg_right_trans.item   = [-bodyparam.size.hip(1)/2 + bodyparam.size.lowerleg(1)/2, 0, -bodyparam.size.lowerleg(3)/2 ];
-bodyparam.position.lowerleg_right_trans.joint  = [0, 0, -bodyparam.size.lowerleg(3)/2];
-
-bodyparam.position.lowerleg_left_trans.item    = [bodyparam.size.hip(1)/2 - bodyparam.size.lowerleg(1)/2, 0, -bodyparam.size.lowerleg(3)/2];
-bodyparam.position.lowerleg_left_trans.joint   = [0, 0, -bodyparam.size.lowerleg(3)/2];
-
-% upper legs
-bodyparam.position.upperleg_right_trans.item =  [0, 0, -bodyparam.size.upperleg(3)/2];
-bodyparam.position.upperleg_right_trans.joint = [0, 0, -bodyparam.size.upperleg(3)/2];
-
-bodyparam.position.upperleg_left_trans.item =  [0, 0, -bodyparam.size.upperleg(3)/2];
-bodyparam.position.upperleg_left_trans.joint = [0, 0, -bodyparam.size.upperleg(3)/2];
-
-% hip
-bodyparam.position.hip_trans_right  = [bodyparam.size.hip(1)/2 - bodyparam.size.lowerleg(1)/2, 0,  - bodyparam.size.hip(3)/2];
-bodyparam.position.hip_trans_left  =  [-bodyparam.size.hip(1)/2 + bodyparam.size.lowerleg(1)/2, 0,  - bodyparam.size.hip(3)/2];
-
-% UPPER BODY 
-% body
-bodyparam.position.body_trans = [0 0 -bodyparam.size.body(3)/2];
-
-% arms
-bodyparam.position.upperarms_right_trans = [0 0 bodyparam.size.body(3)/2-bodyparam.size.neck(3)];
-bodyparam.position.upperarms_left_trans = [0 0 bodyparam.size.body(3)/2-bodyparam.size.neck(3)];
-bodyparam.position.lowerarms_right_trans = [bodyparam.size.upperarms(1)/2 0 bodyparam.size.lowerarms(3)/2];
-bodyparam.position.lowerarms_left_trans = [-bodyparam.size.upperarms(1)/2 0 bodyparam.size.lowerarms(3)/2];
-
+% UPPER BODY
 
 % head
-bodyparam.position.head = [0 0 .5*bodyparam.size.body(3) + .5*bodyparam.size.head];
+bodyparam.position.head = [0 0 bodyparam.size.head(3)/2];
+bodyparam.position.neck = [0 0 -bodyparam.size.neck(3)/2];
+%neck
+bodyparam.position.neck = [0 0 bodyparam.size.body(3)/2];
+% arms
+bodyparam.position.right.lowerarm = [0 0 bodyparam.size.upperarm(3)/2 + bodyparam.size.lowerarm(3)/2];
+bodyparam.position.left.lowerarm = [0 0 bodyparam.size.upperarm(3)/2 + bodyparam.size.lowerarm(3)/2];
+
+bodyparam.position.right.upperarm = [0 0 bodyparam.size.upperarm(3)/2];
+bodyparam.position.left.upperarm = [0 0 bodyparam.size.upperarm(3)/2];
+
+% body
+bodyparam.position.body = [0, 0, bodyparam.size.body(3)/2];
+
+
+% LOWER BODY 
+
+% hip
+bodyparam.position.hip  = [0, 0,  bodyparam.size.body(3)/2];
+
+% upper legs
+bodyparam.position.right.upperleg.joint = [0, bodyparam.size.hip(1)/2, bodyparam.size.upperleg(1)/2];
+bodyparam.position.right.upperleg.item =  [0, 0, bodyparam.size.upperleg(3)/2];
+
+bodyparam.position.left.upperleg.joint = [0, -bodyparam.size.hip(1)/2, bodyparam.size.upperleg(1)/2];
+bodyparam.position.left.upperleg.item =  [0, 0, bodyparam.size.upperleg(3)/2];
+
+
+% lower legs
+bodyparam.position.right.lowerleg.joint  = [0, 0, bodyparam.size.upperleg(3)/2];
+bodyparam.position.right.lowerleg.item   = [0, 0, bodyparam.size.lowerleg(3)/2];
+
+bodyparam.position.left.lowerleg.item    = [0, 0, bodyparam.size.upperleg(3)/2];
+bodyparam.position.left.lowerleg.joint   = [0, 0, bodyparam.size.lowerleg(3)/2];
+
+% foot 
+bodyparam.position.right.foot.joint   = [0, 0, bodyparam.size.lowerleg(3)/2];
+bodyparam.position.right.foot.item   = [bodyparam.size.foot(3)/2,0, bodyparam.size.foot(1)/2];
+
+bodyparam.position.left.foot.joint   = [0, 0, bodyparam.size.lowerleg(3)/2];
+bodyparam.position.left.foot.item   = [bodyparam.size.foot(3)/2,0, bodyparam.size.foot(1)/2];
+
+%% distance proximal joint to the bodys center of mass
+bodyparam.d1.hip = [0 0 0];
+
+bodyparam.d1.right.upperleg = [0,0.0188,0.1782];
+bodyparam.d1.right.lowerleg =  [0, 0.0059, 0.1865];
+bodyparam.d1.right.foot = [-0.0656, 0, 0.0402];
+
+bodyparam.d1.left.upperleg = [0,-0.0188,0.1782];
+bodyparam.d1.left.lowerleg =  [0, -0.0059, 0.1865];
+bodyparam.d1.left.foot = [-0.0656, 0, 0.0402];
+
+
+
+
+
+%% Center of mass
+
+bodyparam.sp.hip = [0 0 0]; 
+
+bodyparam.sp.right.upperleg = 1/2*bodyparam.size.upperleg - [0,0.0188,0.1782];
+bodyparam.sp.right.lowerleg = 1/2*bodyparam.size.lowerleg - [0, 0.0059, 0.1865]; 
+bodyparam.sp.right.foot = 1/2*bodyparam.size.foot - [-0.0656, 0, 0.0402];
+
+
+bodyparam.sp.left.upperleg  = 1/2*bodyparam.size.upperleg - [0,-0.0188,0.1782];
+bodyparam.sp.left.lowerleg  = 1/2*bodyparam.size.lowerleg - [0, -0.0059, 0.1865];
+bodyparam.sp.left.foot = 1/2*bodyparam.size.foot - [-0.0656, 0, 0.0402];
+
+%%
+
+
+
+%% [max min] angle 
+
+bodyparam.maxlim.hip.ef = 10;
+bodyparam.minlim.hip.ef = -120;
+
+bodyparam.maxlim.hip.abd = 70;
+bodyparam.minlim.hip.abd = -10;
+
+bodyparam.maxlim.knee = 120;
+bodyparam.minlim.knee = -1;
+
+bodyparam.maxlim.ankle = 40;
+bodyparam.minlim.ankle = -20;
+
+%% Muscle leverage
+
+bodyparam.r.hip.ef = 1/3*bodyparam.size.hip(3); % [m]
+bodyparam.r.hip.abd = 0.09; % [m]
+bodyparam.r.knee = 0.05; % [m]
+bodyparam.r.foot = 0.08; % [m]
+
+%%
+
+
+
+
+
 
 
 %% Init stuff parameters
 
 stuffparam.dimensions.wall = [0.01,3,3]; 
 stuffparam.dimensions.ball = .1; %[m] radius
-staffparam.position.ball = [bodyparam.size.hip(1)/2,-.2,-stuffparam.dimensions.ball];
-stuffparam.position.body_wall_trans = [0 -4 -stuffparam.dimensions.wall(3)/2];
-
 stuffparam.dimensions.floor = [8,8,.01];
-stuffparam.position.floor = [0 0 stuffparam.dimensions.floor(3)];
 
-%% weights according to https://exrx.net/Kinesiology/Segments for total 62kg
-tw = 62; %total weight
-bodyparam.weight.total = tw; %[kg]
-bodyparam.weight.head = .0826*tw; 
-bodyparam.weight.upperarm = .0325*tw;
-bodyparam.weight.lowerarm = 0.0252*tw; 
-bodyparam.weight.hip = .1366*tw; 
-bodyparam.weight.upperleg = .105*tw;
-bodyparam.weight.lowerleg = 0.0475*tw; 
 
-bodyparam.weight.body = bodyparam.weight.total - bodyparam.weight.head...
-                                   - bodyparam.weight.upperarm...
-                                   - bodyparam.weight.lowerarm...
-                                   - bodyparam.weight.hip...
-                                   - bodyparam.weight.upperleg...
-                                   - bodyparam.weight.lowerleg;
+staffparam.position.ball  = [.5,bodyparam.size.hip(1)/2,  bodyparam.size.lowerbodyheight-stuffparam.dimensions.ball-stuffparam.dimensions.floor(3)/2]
+stuffparam.position.wall = [4 0 bodyparam.size.lowerbodyheight-stuffparam.dimensions.wall(3)/2];
+stuffparam.position.floor = [0 0 bodyparam.size.lowerbodyheight];
+
+
+
+%% weights
+bodyparam.weight.pelvis = 10.2516; %[kg] 
+bodyparam.weight.upperleg = 8.1719; %[kg]
+bodyparam.weight.lowerleg = 3.3541; %[kg]
+
+%% radius
+bodyparam.rx.pelvis = 0.1224; %[m]
+bodyparam.ry.pelvis = 0.1643; %[m]
+bodyparam.hz.pelvis = 0.18783; %[m]
+
+bodyparam.rx.upperleg = 0.0947; %[m]
+%bodyparam.ry.upperleg = 0.1643; %[m] % no data in the sheet
+bodyparam.hz.upperleg = 0.4347; %[m]
+
+bodyparam.rx.lowerleg = 0.0597; %[m]
+%bodyparam.ry.lowerleg = 0.1643; %[m] % no data in the sheet
+bodyparam.hz.lowerleg = 0.4239; %[m]
 
 %% stiffness and damping
 
-% femur
-bodyparam.stiffness.hip = 7;%[Nm/rad] No ref
-bodyparam.damping.hip = .2;%[Nms/rad]
+% hip
+bodyparam.stiffness.hip = 100;%[Nm/rad] No ref
+bodyparam.damping.hip = .001;%[Nms/rad]
 
-bodyparam.stiffness.knee = 10.72;%[Nm/rad] according to jospt.2006.2320
-bodyparam.damping.knee = 0.29;%[Nms/rad]
+% knee
+bodyparam.stiffness.knee = 100;%[Nm/rad] according to jospt.2006.2320
+bodyparam.damping.knee = .001;%[Nms/rad]
 
-
-
-% TODO: 
-% pelvis (just random paprameters so far)
-bodyparam.stiffness.pelvis = 10e4;%[Nm/rad] parameter to be defined...
-bodyparam.damping.pelvis = 1000;%[Nms/rad]
+% pelvis
+bodyparam.stiffness.ankle = 100;%[Nm/rad] parameter to be defined...
+bodyparam.damping.ankle = .001;%[Nms/rad]
 
 
+% pelvis
+bodyparam.stiffness.pelvis = 100;%[Nm/rad] parameter to be defined...
+bodyparam.damping.pelvis = .001;%[Nms/rad]
+
+%% Inertia 1/2*(a^2 + b^2)*m
+
+bodyparam.inertia.hip = get_inertia(bodyparam.size.hip, bodyparam.d1.hip, bodyparam.weight.pelvis);
+bodyparam.inertia.right.upperleg = get_inertia(bodyparam.size.upperleg, bodyparam.d1.right.upperleg, bodyparam.weight.upperleg);
+bodyparam.inertia.right.lowerleg = get_inertia(bodyparam.size.lowerleg, bodyparam.d1.right.lowerleg, bodyparam.weight.lowerleg);
+bodyparam.inertia.right.foot = get_inertia(bodyparam.size.foot, bodyparam.d1.right.foot, bodyparam.weight.foot);
+
+bodyparam.inertia.left.upperleg = get_inertia(bodyparam.size.upperleg, bodyparam.d1.left.upperleg, bodyparam.weight.upperleg);
+bodyparam.inertia.left.lowerleg = get_inertia(bodyparam.size.lowerleg, bodyparam.d1.left.lowerleg, bodyparam.weight.lowerleg);
+bodyparam.inertia.left.foot = get_inertia(bodyparam.size.foot, bodyparam.d1.left.foot, bodyparam.weight.foot);
+
+
+
+
+
+
+%% Colors
+lcolor = [.2 .6 1];
+ucolor = [1.0 0.8 0.8];
+jcolor = [.4 1 .6];
 
 
 
