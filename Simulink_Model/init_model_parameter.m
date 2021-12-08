@@ -21,6 +21,7 @@
 
 
 
+%%
 
 
 %% dimensions
@@ -56,6 +57,11 @@ bodyparam.size.lowerbodyheight = bodyparam.size.leg(3) + 1/2*bodyparam.size.hip(
 bodyparam.size.jointballs = .02; 
 bodyparam.size.jointballs_hip = .04; 
 
+%% weights
+bodyparam.weight.pelvis   = 10.2516; %[kg] 
+bodyparam.weight.upperleg = 8.1719;  %[kg]
+bodyparam.weight.lowerleg = 3.3541;  %[kg]
+bodyparam.weight.foot     = 1.0172;  %[kg] 
 
 %% Transormations:
 
@@ -67,41 +73,84 @@ bodyparam.position.head = [0 0 bodyparam.size.head(3)/2];
 %neck
 bodyparam.position.neck = [0 0 bodyparam.size.body(3)/2];
 % arms
-bodyparam.position.upperarm_right_trans = [0 0 bodyparam.size.upperarm(3)/2];
-bodyparam.position.upperarm_left_trans = [0 0 bodyparam.size.upperarm(3)/2];
-bodyparam.position.lowerarm_right_trans = [0 0 bodyparam.size.upperarm(3)/2 + bodyparam.size.lowerarm(3)/2];
-bodyparam.position.lowerarm_left_trans = [0 0 bodyparam.size.upperarm(3)/2 + bodyparam.size.lowerarm(3)/2];
+bodyparam.position.right.lowerarm = [0 0 bodyparam.size.upperarm(3)/2 + bodyparam.size.lowerarm(3)/2];
+bodyparam.position.right.lowerarm = [0 0 bodyparam.size.upperarm(3)/2 + bodyparam.size.lowerarm(3)/2];
+bodyparam.position.left.upperarm = [0 0 bodyparam.size.upperarm(3)/2];
+bodyparam.position.left.upperarm = [0 0 bodyparam.size.upperarm(3)/2];
 
 % body
-bodyparam.position.body_trans = [0, 0, bodyparam.size.body(3)/2];
+bodyparam.position.body = [0, 0, bodyparam.size.body(3)/2];
 
 
 % LOWER BODY 
 
 % hip
-bodyparam.position.hip_trans  = [0, 0,  bodyparam.size.body(3)/2];
+bodyparam.position.hip  = [0, 0,  bodyparam.size.body(3)/2];
 
 % upper legs
-bodyparam.position.upperleg_right_trans.joint = [0, bodyparam.size.hip(1)/2, bodyparam.size.upperleg(1)/2];
-bodyparam.position.upperleg_right_trans.item =  [0, 0, bodyparam.size.upperleg(3)/2];
+bodyparam.position.right.upperleg.right.joint = [0, bodyparam.size.hip(1)/2, bodyparam.size.upperleg(1)/2];
+bodyparam.position.right.upperleg.right.item =  [0, 0, bodyparam.size.upperleg(3)/2];
 
-bodyparam.position.upperleg_left_trans.joint = [0, -bodyparam.size.hip(1)/2, bodyparam.size.upperleg(1)/2];
-bodyparam.position.upperleg_left_trans.item =  [0, 0, bodyparam.size.upperleg(3)/2];
+bodyparam.position.left.upperleg.joint = [0, -bodyparam.size.hip(1)/2, bodyparam.size.upperleg(1)/2];
+bodyparam.position.left.upperleg.item =  [0, 0, bodyparam.size.upperleg(3)/2];
 
 
 % lower legs
-bodyparam.position.lowerleg_right_trans.joint  = [0, 0, bodyparam.size.upperleg(3)/2];
-bodyparam.position.lowerleg_right_trans.item   = [0, 0, bodyparam.size.lowerleg(3)/2];
+bodyparam.position.right.lowerleg.right.joint  = [0, 0, bodyparam.size.upperleg(3)/2];
+bodyparam.position.right.lowerleg.right.item   = [0, 0, bodyparam.size.lowerleg(3)/2];
 
-bodyparam.position.lowerleg_left_trans.item    = [0, 0, bodyparam.size.upperleg(3)/2];
-bodyparam.position.lowerleg_left_trans.joint   = [0, 0, bodyparam.size.lowerleg(3)/2];
+bodyparam.position.left.lowerleg.item    = [0, 0, bodyparam.size.upperleg(3)/2];
+bodyparam.position.left.lowerleg.joint   = [0, 0, bodyparam.size.lowerleg(3)/2];
 
-%
-bodyparam.position.foot_left_trans.joint   = [0, 0, bodyparam.size.lowerleg(3)/2];
-bodyparam.position.foot_left_trans.item   = [0, 0, bodyparam.size.foot(1)/2];
+% foot 
+bodyparam.position.right.foot.joint   = [0, 0, bodyparam.size.lowerleg(3)/2];
+bodyparam.position.right.foot.item   = [bodyparam.size.foot(1)/2,0, bodyparam.size.foot(1)/2];
 
-bodyparam.position.foot_right_trans.joint   = [0, 0, bodyparam.size.lowerleg(3)/2];
-bodyparam.position.foot_right_trans.item   = [0,0, bodyparam.size.foot(1)/2];
+bodyparam.position.left.foot.joint   = [0, 0, bodyparam.size.lowerleg(3)/2];
+bodyparam.position.left.foot.item   = [0, 0, bodyparam.size.foot(1)/2];
+
+
+
+%% Center of mass
+
+bodyparam.sp.hip = [0 0 0]; % right + left -
+
+bodyparam.sp.right.upperleg = 1/2*bodyparam.size.upperleg - [0,0.0188,0.1782];
+bodyparam.sp.right.lowerleg = 1/2*bodyparam.size.lowerleg - [0, 0.0059, 0.1865]; 
+bodyparam.sp.right.foot = 1/2*bodyparam.size.foot - [-0.0656, 0, 0.0402];
+
+
+bodyparam.sp.left.upperleg  = 1/2*bodyparam.size.upperleg - [0,-0.0188,0.1782];
+bodyparam.sp.left.lowerleg  = 1/2*bodyparam.size.lowerleg - [0, -0.0059, 0.1865];
+bodyparam.sp.left.foot = 1/2*bodyparam.size.foot - [-0.0656, 0, 0.0402];
+
+%% [max min] angle 
+
+bodyparam.maxlim.hip.ef = 10;
+bodyparam.minlim.hip.ef = -120;
+
+bodyparam.maxlim.hip.abd = 70;
+bodyparam.minlim.hip.abd = -10;
+
+bodyparam.maxlim.knee = 120;
+bodyparam.minlim.knee = -1;
+
+bodyparam.maxlim.ankle = 40;
+bodyparam.minlim.ankle = -20;
+
+%% Muscle leverage
+
+bodyparam.r.hip.ef = 1/3*bodyparam.size.hip(3); % [m]
+bodyparam.r.hip.abd = 0.09; % [m]
+bodyparam.r.knee = 0.05; % [m]
+bodyparam.r.foot = 0.08; % [m]
+
+%%
+
+
+
+
+
 
 
 %% Init stuff parameters
