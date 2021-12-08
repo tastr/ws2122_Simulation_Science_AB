@@ -1,4 +1,7 @@
+%% Script for testing of the input data, the input daata is given as the time series 
+
 %% General parameter
+
 Ts = 1e-3;
 tend = 1;
 t = 0:Ts:tend;
