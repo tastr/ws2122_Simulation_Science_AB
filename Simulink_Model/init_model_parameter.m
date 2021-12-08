@@ -110,11 +110,24 @@ bodyparam.position.right.foot.item   = [bodyparam.size.foot(3)/2,0, bodyparam.si
 bodyparam.position.left.foot.joint   = [0, 0, bodyparam.size.lowerleg(3)/2];
 bodyparam.position.left.foot.item   = [bodyparam.size.foot(3)/2,0, bodyparam.size.foot(1)/2];
 
+%% distance proximal joint to the bodys center of mass
+bodyparam.d1.hip = [0 0 0];
+
+bodyparam.d1.right.upperleg = [0,0.0188,0.1782];
+bodyparam.d1.right.lowerleg =  [0, 0.0059, 0.1865];
+bodyparam.d1.right.foot = [-0.0656, 0, 0.0402];
+
+bodyparam.d1.left.upperleg = [0,-0.0188,0.1782];
+bodyparam.d1.left.lowerleg =  [0, -0.0059, 0.1865];
+bodyparam.d1.left.foot = [-0.0656, 0, 0.0402];
+
+
+
 
 
 %% Center of mass
 
-bodyparam.sp.hip = [0 0 0]; % right + left -
+bodyparam.sp.hip = [0 0 0]; 
 
 bodyparam.sp.right.upperleg = 1/2*bodyparam.size.upperleg - [0,0.0188,0.1782];
 bodyparam.sp.right.lowerleg = 1/2*bodyparam.size.lowerleg - [0, 0.0059, 0.1865]; 
@@ -124,6 +137,10 @@ bodyparam.sp.right.foot = 1/2*bodyparam.size.foot - [-0.0656, 0, 0.0402];
 bodyparam.sp.left.upperleg  = 1/2*bodyparam.size.upperleg - [0,-0.0188,0.1782];
 bodyparam.sp.left.lowerleg  = 1/2*bodyparam.size.lowerleg - [0, -0.0059, 0.1865];
 bodyparam.sp.left.foot = 1/2*bodyparam.size.foot - [-0.0656, 0, 0.0402];
+
+%%
+
+
 
 %% [max min] angle 
 
@@ -203,6 +220,22 @@ bodyparam.damping.ankle = .001;%[Nms/rad]
 % pelvis
 bodyparam.stiffness.pelvis = 100;%[Nm/rad] parameter to be defined...
 bodyparam.damping.pelvis = .001;%[Nms/rad]
+
+%% Inertia 1/2*(a^2 + b^2)*m
+
+bodyparam.inertia.hip = get_inertia(bodyparam.size.hip, bodyparam.d1.hip, bodyparam.weight.pelvis);
+bodyparam.inertia.right.upperleg = get_inertia(bodyparam.size.upperleg, bodyparam.d1.right.upperleg, bodyparam.weight.upperleg);
+bodyparam.inertia.right.lowerleg = get_inertia(bodyparam.size.lowerleg, bodyparam.d1.right.lowerleg, bodyparam.weight.lowerleg);
+bodyparam.inertia.right.foot = get_inertia(bodyparam.size.foot, bodyparam.d1.right.foot, bodyparam.weight.foot);
+
+bodyparam.inertia.left.upperleg = get_inertia(bodyparam.size.upperleg, bodyparam.d1.left.upperleg, bodyparam.weight.upperleg);
+bodyparam.inertia.left.lowerleg = get_inertia(bodyparam.size.lowerleg, bodyparam.d1.left.lowerleg, bodyparam.weight.lowerleg);
+bodyparam.inertia.left.foot = get_inertia(bodyparam.size.foot, bodyparam.d1.left.foot, bodyparam.weight.foot);
+
+
+
+
+
 
 %% Colors
 lcolor = [.2 .6 1];
