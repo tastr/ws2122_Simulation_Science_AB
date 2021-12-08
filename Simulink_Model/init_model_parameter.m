@@ -118,6 +118,10 @@ bodyparam.position.right.foot.item   = [bodyparam.size.foot(3)/2,0, bodyparam.si
 bodyparam.position.left.foot.joint   = [0, 0, bodyparam.size.lowerleg(3)/2];
 bodyparam.position.left.foot.item   = [bodyparam.size.foot(3)/2,0, bodyparam.size.foot(1)/2];
 
+% toes
+bodyparam.position.right.toes = [0 0 bodyparam.size.foot(3)/2];
+bodyparam.position.left.toes = [0 0 bodyparam.size.foot(3)/2];
+
 %% distance proximal joint to the bodys center of mass
 bodyparam.d1.hip = [0 0 0];
 
@@ -155,14 +159,27 @@ bodyparam.sp.left.foot = 1/2*bodyparam.size.foot - [-0.0656, 0, 0.0402];
 bodyparam.maxlim.hip.ef = 10;
 bodyparam.minlim.hip.ef = -120;
 
-bodyparam.maxlim.hip.abd = 70;
-bodyparam.minlim.hip.abd = -10;
+bodyparam.maxlim.hip.abd = 0;%70;
+bodyparam.minlim.hip.abd = -0.01;%-10;
 
 bodyparam.maxlim.knee = 120;
 bodyparam.minlim.knee = -1;
 
-bodyparam.maxlim.ankle = 40;
-bodyparam.minlim.ankle = -20;
+bodyparam.maxlim.ankle = 0;
+bodyparam.minlim.ankle = -0.01;
+
+% left
+bodyparam.maxlim.left.hip.ef = 0;
+bodyparam.minlim.left.hip.ef = -0.01;
+
+bodyparam.maxlim.left.hip.abd = 0;%70;
+bodyparam.minlim.left.hip.abd = -0.01;%-10;
+
+bodyparam.maxlim.left.knee = 0;
+bodyparam.minlim.left.knee = -0.01;
+
+bodyparam.maxlim.left.ankle = 0;
+bodyparam.minlim.left.ankle = -0.01;
 
 %% Muscle leverage
 
