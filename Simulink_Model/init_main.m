@@ -4,7 +4,7 @@ currpath = pwd;
 % change the directory to the 
 modelname = bdroot;
 path2model = which(modelname);
-path2model = strrep(path2model,modelname + ".slx", "")
+path2model = strrep(path2model,modelname + ".slx", "");
 
 cd(path2model)
 %% Init muscle parameters
@@ -21,6 +21,7 @@ init_muscle_MEE_angle;
 %% Init other parameters
 init_model_parameter;
 target_position = [0 0 0];
+% intv = 2;
 
 
 %% Choose the colors for the model 
