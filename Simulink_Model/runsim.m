@@ -9,7 +9,7 @@ trials=100;
 save_data=cell(1,trials);
 set_param('main','SimMechanicsOpenEditorOnUpdate','off')
 % set_param('main','SimMechanicsOpenEditorOnUpdate','on')
-
+%%
 for i = 1:trials
     t1 = intv*rand(1);
     musStart1 = 2*rand(1)-1;
