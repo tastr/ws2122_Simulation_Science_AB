@@ -1,4 +1,10 @@
-%% init_model_parameter
+%% init_simple_model_parameter
+% Parameters for the simplified main model; there is no upper body and the
+% body parts are modeled as thin sticks. The inertia is calculated as
+% 1/2*weight*length^2 + 1/2*d1^2*weight, where 1/2*d1^2*weight is the term
+% from steiner's satz with d1: the distance to the center of masses
+% 
+% 
 % all the model parameters are used for the multibody blocks. Here the
 % sized of the body and transformation vectors are listed. Also are defined
 % the sized and transformations of the stuff like wall, ball and floor.
@@ -59,10 +65,10 @@ bodyparam.size.leg = [bodyparam.size.lowerleg(1:2), bodyparam.size.lowerleg(3) +
 
 
 bodyparam.size.bodyheight = bodyparam.size.head(3) + bodyparam.size.body(3) + bodyparam.size.leg(3); 
-bodyparam.size.lowerbodyheight = bodyparam.size.leg(3) + 1/2*bodyparam.size.hip(3) + bodyparam.size.foot(3);
+bodyparam.size.lowerbodyheight = bodyparam.size.leg(3) + 1/2*bodyparam.size.hip(3) + bodyparam.size.foot(3)*2;
 
 % balls for the joints visualizations
-bodyparam.size.jointballs = .02; 
+bodyparam.size.jointballs = .01; 
 bodyparam.size.jointballs_hip = .04; 
 
 %% weights
@@ -125,13 +131,13 @@ bodyparam.position.left.toes = [0 0 bodyparam.size.foot(3)/2];
 %% distance proximal joint to the bodys center of mass
 bodyparam.d1.hip = [0 0 0];
 
-bodyparam.d1.right.upperleg = [0,0.0188,0.1782];
-bodyparam.d1.right.lowerleg =  [0, 0.0059, 0.1865];
-bodyparam.d1.right.foot = [-0.0656, 0, 0.0402];
+bodyparam.d1.right.upperleg = [0,0,0.1782];
+bodyparam.d1.right.lowerleg =  [0, 0, 0.1865];
+bodyparam.d1.right.foot = [0, 0, 0];
 
-bodyparam.d1.left.upperleg = [0,-0.0188,0.1782];
-bodyparam.d1.left.lowerleg =  [0, -0.0059, 0.1865];
-bodyparam.d1.left.foot = [-0.0656, 0, 0.0402];
+bodyparam.d1.left.upperleg = [0,0,0.1782];
+bodyparam.d1.left.lowerleg =  [0, 0, 0.1865];
+bodyparam.d1.left.foot = [0, 0, 0];
 
 
 
@@ -141,16 +147,25 @@ bodyparam.d1.left.foot = [-0.0656, 0, 0.0402];
 
 bodyparam.sp.hip = [0 0 0]; 
 
-bodyparam.sp.right.upperleg = 1/2*bodyparam.size.upperleg - [0,0.0188,0.1782];
-bodyparam.sp.right.lowerleg = 1/2*bodyparam.size.lowerleg - [0, 0.0059, 0.1865]; 
-bodyparam.sp.right.foot = 1/2*bodyparam.size.foot - [-0.0656, 0, 0.0402];
+bodyparam.sp.right.upperleg = 1/2*bodyparam.size.upperleg - bodyparam.d1.right.upperleg;
+bodyparam.sp.right.lowerleg = 1/2*bodyparam.size.lowerleg - bodyparam.d1.right.lowerleg; 
+bodyparam.sp.right.foot = 1/2*bodyparam.size.foot - bodyparam.d1.right.foot;
 
 
-bodyparam.sp.left.upperleg  = 1/2*bodyparam.size.upperleg - [0,-0.0188,0.1782];
-bodyparam.sp.left.lowerleg  = 1/2*bodyparam.size.lowerleg - [0, -0.0059, 0.1865];
-bodyparam.sp.left.foot = 1/2*bodyparam.size.foot - [-0.0656, 0, 0.0402];
+bodyparam.sp.left.upperleg  = 1/2*bodyparam.size.upperleg - bodyparam.d1.left.upperleg;
+bodyparam.sp.left.lowerleg  = 1/2*bodyparam.size.lowerleg - bodyparam.d1.left.lowerleg;
+bodyparam.sp.left.foot = 1/2*bodyparam.size.foot - bodyparam.d1.left.foot;
 
-%%
+%% Inertia 1/2*(a^2 + b^2)*m
+
+bodyparam.inertia.hip = get_simple_model_inertia(bodyparam.size.hip(2), bodyparam.d1.hip(2), bodyparam.weight.pelvis);
+bodyparam.inertia.right.upperleg = get_simple_model_inertia(bodyparam.size.upperleg(3), bodyparam.d1.right.upperleg(3), bodyparam.weight.upperleg);
+bodyparam.inertia.right.lowerleg = get_simple_model_inertia(bodyparam.size.lowerleg(3), bodyparam.d1.right.lowerleg(3), bodyparam.weight.lowerleg);
+bodyparam.inertia.right.foot = [1 1 1];
+
+bodyparam.inertia.left.upperleg = get_simple_model_inertia(bodyparam.size.upperleg(3), bodyparam.d1.left.upperleg(3), bodyparam.weight.upperleg);
+bodyparam.inertia.left.lowerleg = get_simple_model_inertia(bodyparam.size.lowerleg(3), bodyparam.d1.left.lowerleg(3), bodyparam.weight.lowerleg);
+bodyparam.inertia.left.foot = [1 1 1];
 
 
 
@@ -191,13 +206,6 @@ bodyparam.r.foot = 0.08; % [m]
 
 
 
-
-%% weights
-bodyparam.weight.pelvis = 10.2516; %[kg] 
-bodyparam.weight.upperleg = 8.1719; %[kg]
-bodyparam.weight.lowerleg = 3.3541; %[kg]
-
-
 %% stiffness and damping
 
 % hip
@@ -217,17 +225,6 @@ bodyparam.damping.ankle = .001;%[Nms/rad]
 bodyparam.stiffness.pelvis = 100;%[Nm/rad] parameter to be defined...
 bodyparam.damping.pelvis = .01;%[Nms/rad]
 
-%% Inertia 1/2*(a^2 + b^2)*m
-
-bodyparam.inertia.hip = get_inertia(bodyparam.size.hip, bodyparam.d1.hip, bodyparam.weight.pelvis);
-bodyparam.inertia.right.upperleg = get_inertia(bodyparam.size.upperleg, bodyparam.d1.right.upperleg, bodyparam.weight.upperleg);
-bodyparam.inertia.right.lowerleg = get_inertia(bodyparam.size.lowerleg, bodyparam.d1.right.lowerleg, bodyparam.weight.lowerleg);
-bodyparam.inertia.right.foot = get_inertia(bodyparam.size.foot, bodyparam.d1.right.foot, bodyparam.weight.foot);
-
-bodyparam.inertia.left.upperleg = get_inertia(bodyparam.size.upperleg, bodyparam.d1.left.upperleg, bodyparam.weight.upperleg);
-bodyparam.inertia.left.lowerleg = get_inertia(bodyparam.size.lowerleg, bodyparam.d1.left.lowerleg, bodyparam.weight.lowerleg);
-bodyparam.inertia.left.foot = get_inertia(bodyparam.size.foot, bodyparam.d1.left.foot, bodyparam.weight.foot);
-
 
 
 
@@ -244,8 +241,9 @@ stuffparam.position.floor = [0 0 bodyparam.size.lowerbodyheight];
 
 stuffparam.weight.ball = .44; 
 
-
-
+%%
+lcolor = [.5, .5 , .5];
+fcolor = [0 0 0];
 
 
 
