@@ -36,6 +36,9 @@ slblocks
 cd(currpath)
 disp("The model " + modelname + " was  initilized!")
 
+%% 
+Ts = 1e-3;
+tend = 2; 
 
 
 

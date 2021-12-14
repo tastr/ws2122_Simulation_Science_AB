@@ -1,0 +1,37 @@
+http://www.mathworks.com/matlabcentral/fileexchange/7506-particle-swarm-optimization-toolbox
+
+Particle Swarm Optimization Toolbox
+
+by Brian Birge
+
+ 
+
+22 Apr 2005 (Updated 20 Mar 2006)
+
+With Trelea, Common, and Clerc types along with ...
+
+File Information
+Description 	
+
+Robust Particle Swarm toolbox implementing Trelea, Common, and Clerc types along with an alpha version of change detection.
+
+This toolbox is designed for researchers in Computational Intelligence as well as application developers, students, and classroom labs. It is robust enough that several papers have been developed using it but it is also in constant development and very easy to hack. Users of MATLAB's Optimization Toolbox should feel right at home but even if you don't use that toolbox this will be easy to figure. Extensive help is included.
+
+Anyone from serious AI researchers to beginning students should get something out of this.
+
+This toolbox is constantly evolving and I welcome suggestions.
+
+Current feature set:
+* Trelea, Clerc, and Common Types
+* Vectorized and non-vectorized versions, you can investigate thousands of particles at once with the proper cost function.
+* custom plotting plug ins
+* neural net trainer (requires Matlab's neural net toolbox)
+* PDF Particle Swarm Introduction
+* Alpha version of change detection, will track dynamic environments
+* includes suite of test functions commonly used in the CI/optimization community.
+Acknowledgements 	
+
+This file inspired Neural Network Add In For Psort, Optimal Power Flow By Vector Pso, Pso Solution To Economic Dispatch, Improved Pso Program To Solve Economic Dispatch, and Constrained Particle Swarm Optimization.
+Required Products 	Neural Network Toolbox
+MATLAB release 	MATLAB 7.0.1 (R14SP1)
+Other requirements 	* current version works in Matlab 7 but has been in development since Matlab 5 so might work in the earlier versions too.
