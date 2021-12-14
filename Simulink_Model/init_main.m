@@ -20,7 +20,7 @@ init_muscle_MEE_angle;
 
 %% Init other parameters
 init_model_parameter;
-target_position = [0 0 -0.05];%[0 0 0] is in the middle of the wall 
+target_position = [-0.05 0 0];%[0 0 0] is in the middle of the wall 
 % intv = 2;
 
 
@@ -41,6 +41,8 @@ Ts = 1e-3;
 tend = 2; 
 brake_time = .2; % for PSO, time between different signals 
 
+%% Stbilization
 
+stabilize_knee_gain = .05; 
 
 
