@@ -526,7 +526,7 @@ for k = 1:itr
     if ~isempty(options.PlotFcns) && ~mod(k,options.PlotInterval)
 		% find figure
 		figureHandle = findobj('Tag','PSO Plots','Type','figure');
-		PA_silentFigure(figureHandle);
+		%PA_silentFigure(figureHandle);
         % Exit gracefully if user has closed the figure
         if isempty(figureHandle)
             exitflag = -1 ;

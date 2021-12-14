@@ -165,8 +165,8 @@ bodyparam.minlim.hip.abd = -0.01;%-10;
 bodyparam.maxlim.knee = 120;
 bodyparam.minlim.knee = -1;
 
-bodyparam.maxlim.ankle = 0;
-bodyparam.minlim.ankle = -0.01;
+bodyparam.maxlim.ankle = 40;
+bodyparam.minlim.ankle = -20;
 
 % left
 bodyparam.maxlim.left.hip.ef = 0;
@@ -201,8 +201,8 @@ bodyparam.weight.lowerleg = 3.3541; %[kg]
 %% stiffness and damping
 
 % hip
-bodyparam.stiffness.hip = 100;%[Nm/rad] No ref
-bodyparam.damping.hip = .001;%[Nms/rad]
+bodyparam.stiffness.hip = 1e4;%[Nm/rad] No ref
+bodyparam.damping.hip = .1;%[Nms/rad]
 
 % knee
 bodyparam.stiffness.knee = 100000;%[Nm/rad] according to jospt.2006.2320
@@ -233,13 +233,13 @@ bodyparam.inertia.left.foot = get_inertia(bodyparam.size.foot, bodyparam.d1.left
 
 %% Init stuff parameters
 
-stuffparam.dimensions.wall = [0.01,3,3]; 
+stuffparam.dimensions.wall = [0.01,6,6]; 
 stuffparam.dimensions.ball = .1; %[m] radius
-stuffparam.dimensions.floor = [8,8,.01];
+stuffparam.dimensions.floor = [12,12,.01];
 
 
 staffparam.position.ball  = [.5,bodyparam.size.hip(1)/2, -stuffparam.dimensions.ball-stuffparam.dimensions.floor(3)/2];%[.5,bodyparam.size.hip(1)/2,  bodyparam.size.lowerbodyheight-stuffparam.dimensions.ball-stuffparam.dimensions.floor(3)/2];
-stuffparam.position.wall = [4 0 bodyparam.size.lowerbodyheight-stuffparam.dimensions.wall(3)/2];
+stuffparam.position.wall = [6 0 bodyparam.size.lowerbodyheight-stuffparam.dimensions.wall(3)/2];
 stuffparam.position.floor = [0 0 bodyparam.size.lowerbodyheight];
 
 
