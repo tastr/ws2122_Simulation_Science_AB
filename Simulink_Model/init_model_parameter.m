@@ -159,8 +159,8 @@ bodyparam.sp.left.foot = 1/2*bodyparam.size.foot - [-0.0656, 0, 0.0402];
 bodyparam.maxlim.hip.ef = 10;
 bodyparam.minlim.hip.ef = -120;
 
-bodyparam.maxlim.hip.abd = 0;%70;
-bodyparam.minlim.hip.abd = -0.01;%-10;
+bodyparam.maxlim.hip.abd = 70;%70;
+bodyparam.minlim.hip.abd = -10;%-10;
 
 bodyparam.maxlim.knee = 120;
 bodyparam.minlim.knee = -1;
@@ -201,7 +201,7 @@ bodyparam.weight.lowerleg = 3.3541; %[kg]
 %% stiffness and damping
 
 % hip
-bodyparam.stiffness.hip = 1e4;%[Nm/rad] No ref
+bodyparam.stiffness.hip = 1000;%[Nm/rad] No ref
 bodyparam.damping.hip = .1;%[Nms/rad]
 
 % knee
