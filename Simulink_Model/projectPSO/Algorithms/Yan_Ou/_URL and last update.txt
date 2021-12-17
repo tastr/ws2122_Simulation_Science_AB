@@ -1,0 +1,24 @@
+http://www.mathworks.com/matlabcentral/fileexchange/41708-particle-swarm-optimization
+
+Particle Swarm Optimization
+
+by Yan Ou
+
+ 
+
+13 May 2013 (Updated 24 Dec 2013)
+
+[xMin,yMin] = pso(fun,np,lb,ub);
+
+
+File Information
+Description 	
+
+fun: function handle (y = fun(x), x is column vector)
+np: number of particles
+lb, ub: lb<x<ub
+xMin: yMin = fun(xMin)
+yMin: minimum value of the cost function fun
+pso finds the global minimum for a constraint function (convex or non-con) with multiple variables.
+Required Products 	MATLAB
+MATLAB release 	MATLAB 7.14 (R2012a) 
